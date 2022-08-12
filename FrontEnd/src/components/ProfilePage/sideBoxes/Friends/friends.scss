@@ -1,0 +1,36 @@
+.photo {
+  justify-content: flex-start;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    height: 10%;
+
+    span {
+      color: rgb(81, 81, 211);
+    }
+  }
+  .photos {
+    height: 90%;
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 3px;
+    border-radius: 9px;
+
+    overflow: hidden;
+    .friends {
+      img {
+        height: 80px;
+        width: 97px;
+        background-size: cover;
+      }
+      p {
+        font-size: 10px;
+        overflow: hidden;
+        text-align: center;
+      }
+    }
+  }
+}

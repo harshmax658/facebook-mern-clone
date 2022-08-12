@@ -1,0 +1,126 @@
+.signup_container {
+  z-index: 2;
+  background-color: white;
+  box-shadow: 0px 1px 7px 2px #c7c2c2;
+  border-radius: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  .signupbox {
+    width: 400px;
+    border-radius: 5xp;
+    // border: 0.1px solid grey;
+    min-height: 400px;
+    height: auto;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    .info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      padding: 10px;
+      width: 100%;
+      border-bottom: 1px solid lightgrey;
+      & :first-child {
+        font-size: 2rem;
+        font-weight: bolder;
+        & :first-child {
+          font-size: 2rem;
+          font-weight: bolder;
+        }
+        & :last-child {
+          font-size: 1.2rem;
+          color: darkgray;
+        }
+      }
+      .cancelButton {
+        .closeButton {
+          cursor: pointer;
+          outline: none;
+          background: none;
+          color: black;
+          height: auto;
+        }
+      }
+    }
+
+    .user_details {
+      padding: 10px;
+
+      .userName {
+        display: flex;
+        & :first-child {
+          margin-right: 10px;
+        }
+      }
+      .user_selection {
+        margin-top: 10px;
+        p {
+          margin-left: 8px;
+          font-size: 14px;
+          color: grey;
+        }
+        .select {
+          display: flex;
+          justify-content: space-around;
+
+          .selectItem {
+            width: 115px;
+            color: black;
+            font-weight: 600;
+            font-size: 15px;
+            outline: none;
+            height: 2.2rem;
+            padding: 0 10px 0;
+            border-radius: 3px;
+            border: 1px solid darkgray;
+          }
+          .form_input_group {
+            width: 113px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            justify-content: space-between;
+            border: 1px solid darkgray;
+            border-radius: 4px;
+            height: 35px;
+
+            input {
+              width: auto;
+              outline: none;
+              border: none;
+              height: auto;
+            }
+            label {
+              color: black;
+              width: 113px;
+              height: 39px;
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
+
+      .termsAndConditions {
+        font-size: 11.2px;
+
+        text-align: justify;
+        padding: 0 0px 0 7px;
+        margin-top: 7px;
+      }
+    }
+    input {
+      background-color: rgb(243, 242, 242);
+      height: 40px;
+    }
+    .formSubmit {
+      display: flex;
+      justify-content: center;
+      button {
+        height: 38px;
+        background-color: #008100;
+        width: 55%;
+      }
+    }
+  }
+}

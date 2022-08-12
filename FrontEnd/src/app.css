@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  min-height: 100%;
+  /* height: auto; */
+  z-index: -3;
+}
+
+html {
+  height: 100vh;
+}
+body,
+#root {
+  height: 100%;
+  background-color: #f0f2f5;
+}
+body,
+html::selection {
+  user-select: none;
+}
+
+.homepage {
+  padding-top: 55px;
+  position: relative;
+  top: 5px;
+  height: 100%;
+}

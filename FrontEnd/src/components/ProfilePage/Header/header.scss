@@ -1,0 +1,100 @@
+.profile_header {
+  width: 100%;
+
+  .user_header {
+    width: auto;
+    height: 29rem;
+    // border: 1px solid;
+    background: linear-gradient(180deg, #ababab, rgb(255, 255, 255), #fff);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    .navBar {
+      width: 75%;
+      position: sticky;
+      top: 0;
+    }
+    .wall_image {
+      border: 1px solid;
+      width: 75%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      height: 20rem;
+      background: url("https://scontent.fdel3-2.fna.fbcdn.net/v/t1.6435-9/38637456_928998893967589_6729433082396409856_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=e3f864&_nc_ohc=Ke_r2oWNaZEAX9idhPv&_nc_ht=scontent.fdel3-2.fna&oh=77741957546fbbf634a5b8976497850e&oe=6194E062")
+        center -686px / cover no-repeat;
+      border-radius: 0 0px 10px 10px;
+      .user_profile_image {
+        border-radius: 50%;
+        height: 170px;
+        width: 165px;
+        position: absolute;
+        bottom: -20px;
+        display: flex;
+        // position: relative;
+        background-color: #fff;
+        img {
+          padding: 4px;
+          height: 100%;
+          width: 100%;
+          border-radius: 50%;
+        }
+        form {
+          label {
+            cursor: pointer;
+            position: absolute;
+            top: 104px;
+            right: -4px;
+            background: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            display: flex;
+            height: 2.5rem;
+            width: 2.5rem;
+            justify-content: center;
+            align-items: center;
+          }
+          input {
+            display: none;
+          }
+        }
+      }
+    }
+    .upload_button {
+      position: relative;
+      top: 24px;
+      width: 25%;
+      button {
+        color: black;
+        background-color: #1298f6;
+        height: 35px;
+        font-size: 1rem;
+
+        &:hover {
+          background-color: white;
+          border: 1px solid;
+          color: #1298f6;
+        }
+        &:active {
+          transform: scale(1.05);
+          background-color: white;
+          border: 1px solid;
+        }
+      }
+    }
+    .user_name {
+      margin: 2rem 0;
+
+      #name {
+        font-size: 2.4rem;
+        font-weight: bold;
+      }
+      div {
+        font-weight: 500;
+        color: rgb(76, 76, 228);
+        font-size: 1.12rem;
+      }
+    }
+  }
+}

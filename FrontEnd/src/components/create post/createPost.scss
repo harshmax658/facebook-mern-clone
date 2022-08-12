@@ -1,0 +1,77 @@
+.create_post {
+  height: 130px;
+  width: 79%;
+  background-color: white;
+  box-shadow: 0.2px 0.2px 0.6px 0.51px rgb(155, 152, 152);
+  border-radius: 5px;
+  z-index: -2;
+  .post_input {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid lightgray;
+    margin: 0 auto;
+    .user {
+      width: 20%;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        // margin: 0 10px 0 0;
+      }
+    }
+    .open_input_popup {
+      width: 80%;
+      border: 2px solid lightblue;
+      background-color: lightgray;
+      cursor: pointer;
+      height: 40px;
+      border-radius: 21px;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+
+      p {
+        opacity: 0.9;
+      }
+    }
+  }
+  .others {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    // justify-content: ;
+    align-items: center;
+    height: 50%;
+    font-size: 1.2rem;
+
+    .live_video {
+      .icons {
+        color: red;
+      }
+    }
+    .photos_video {
+      .icons {
+        color: rgb(31, 182, 31);
+      }
+    }
+    .feeling {
+      .icons {
+        color: rgb(209, 221, 44);
+      }
+    }
+
+    .othersIcons {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .icons {
+        font-size: 1.4rem;
+        margin: 0 5px;
+      }
+    }
+  }
+}

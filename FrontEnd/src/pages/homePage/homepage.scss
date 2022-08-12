@@ -1,0 +1,23 @@
+.homepageInner {
+  // margin-top: 15px;
+  display: flex;
+
+  .userSection {
+    width: 25%;
+    position: fixed;
+    left: 0;
+  }
+  .feedSection {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .usersFriendsSection {
+    width: 25%;
+    position: fixed;
+    right: 0;
+    p {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+  }
+}

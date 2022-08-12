@@ -1,0 +1,45 @@
+.create_comment {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  .user_image {
+    width: 10%;
+    text-align: center;
+    img {
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+    }
+  }
+  .input {
+    width: 90%;
+    // display: flex;
+    position: relative;
+
+    input {
+      border-radius: 30px;
+      min-height: 35px;
+      height: auto;
+      border: none;
+      background-color: #f0f2f5;
+      width: 100%;
+
+      &:focus {
+        border: none;
+        box-shadow: none;
+      }
+    }
+    .input_icons {
+      position: absolute;
+      right: 0;
+      top: 15px;
+      font-size: 1.1rem;
+      color: grey;
+      .icons {
+        margin: 0 3px;
+        cursor: pointer;
+      }
+    }
+  }
+}

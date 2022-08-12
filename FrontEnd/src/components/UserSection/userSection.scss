@@ -1,0 +1,32 @@
+.userSection {
+  margin-left: 20px;
+
+  .userName {
+    ul {
+      list-style: none;
+
+      .avatar {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .usersRelatedLinks {
+    ul {
+      font-weight: 5 00;
+      list-style: none;
+      li {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        .header_icons {
+          margin-right: 20px;
+          font-size: 2rem !important;
+          color: #1298f6 !important;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.profile_post {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+
+  .info {
+    position: relative;
+    width: 37%;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .box {
+      position: sticky;
+      top: 0;
+    }
+  }
+  .postSection {
+    width: 50%;
+  }
+}

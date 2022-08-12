@@ -1,0 +1,87 @@
+.user_comment {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
+  .user_image {
+    width: 10%;
+    text-align: center;
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  }
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .dataContent {
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        .action {
+          display: flex;
+        }
+      }
+      .data {
+        width: 90%;
+        padding: 10px;
+        border-radius: 15px;
+        position: relative;
+        background-color: #f0f2f5;
+        max-width: fit-content;
+        .user_name {
+          font-weight: 600;
+          margin-bottom: 1px;
+        }
+        .content {
+          word-break: break-all;
+          overflow: auto;
+        }
+        .reaction_data {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          right: 4px;
+          bottom: 0;
+
+          .reaction {
+            color: white;
+            background: #1298f6;
+            border-radius: 50%;
+            margin: 3px;
+
+            height: 1rem;
+            svg {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+      .action {
+        display: none;
+        width: 10%;
+        padding-left: 10px;
+        cursor: pointer;
+      }
+    }
+    .likes {
+      padding: 0 10px;
+      font-size: 0.88rem;
+      font-weight: bold;
+      .liked {
+        color: blue;
+      }
+      span {
+        margin: 0 5px;
+        cursor: pointer;
+        &:hover {
+          border-bottom: 1px solid;
+        }
+      }
+    }
+  }
+}
