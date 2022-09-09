@@ -47,6 +47,7 @@
       margin: 8px 0;
       font-size: 0.89rem;
       opacity: 0.8;
+      cursor: pointer;
     }
 
     &::after {
@@ -58,4 +59,9 @@
   button {
     margin-top: 1rem;
   }
+}
+
+.displayFlex {
+  display: flex;
+  align-items: center;
 }

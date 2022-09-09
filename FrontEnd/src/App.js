@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import RouteHandler from "./RouteHandler";
 import { useDispatch, useSelector } from "react-redux";
 import { isuser } from "./redux/user/action";
+import RecoveryLogin from "./pages/recovery page/RecoveryLogin";
 
 const App = () => {
   const history = useHistory();
@@ -37,7 +38,7 @@ const App = () => {
   return (
     <>
       <Switch>
-        <Route path="/login" exact component={LoginSignup} />
+        <Route path="/login" component={LoginSignup} />
         <Route path="/" component={RouteHandler} />
         {/* <Redirect to="/" /> */}
       </Switch>

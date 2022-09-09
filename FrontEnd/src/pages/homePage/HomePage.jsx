@@ -19,7 +19,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(setUserFeedStart({ token }));
   }, [token, dispatch, refreshPost]);
-  console.log(token);
+
   return (
     <>
       {token && currentUser && (

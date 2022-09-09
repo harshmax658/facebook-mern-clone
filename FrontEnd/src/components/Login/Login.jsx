@@ -3,12 +3,14 @@ import CustomButton from "../Forms/Custom Button/CustomButton";
 import FormInput from "../Forms/FormInput/FormInput.jsx";
 import "./login.scss";
 import FormLoginSignup from "../../custom hooks/FormLoginSignup";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { signInStart } from "../../redux/user/action";
+import { useRouteMatch } from "react-router-dom/cjs/react-router-dom";
+import Container from "../Container/Container";
 
-const Login = ({ setSignup }) => {
+const Login = ({ setSignup, RecoveryLogin }) => {
   const [loginData, setLoginData] = FormLoginSignup("login");
   const dispatch = useDispatch();
 
@@ -18,7 +20,9 @@ const Login = ({ setSignup }) => {
 
   const { token } = state;
   const history = useHistory();
-
+  useLocation();
+  const { path } = useRouteMatch();
+  console.log(path);
   useEffect(() => {
     if (token) {
       history.push("/");
@@ -57,19 +61,25 @@ const Login = ({ setSignup }) => {
     //   console.log(dataInJson);
     // }
     dispatch(signInStart({ loginData, history }));
-    console.log("first");
   };
   return (
     <>
-      <div className="login_container">
-        <div className="user_input">
-          <form className="user_input_form" onSubmit={loginHandler}>
+      <Container RecoveryLogin={RecoveryLogin}>
+        <div className={`user_input ${RecoveryLogin && "displayFlex"}`}>
+          <form
+            className={`user_input_form ${RecoveryLogin && "displayFlex"}`}
+            onSubmit={loginHandler}
+          >
             <FormInput
               type="text"
               name="email"
               value={email}
               onChange={setLoginData}
-              placeholder="Email address or phone number"
+              placeholder={`${
+                RecoveryLogin
+                  ? "Email or phone"
+                  : "Email address or phone number"
+              }`}
               required
             />
             <FormInput
@@ -80,16 +90,34 @@ const Login = ({ setSignup }) => {
               placeholder="Password"
               required
             />
-            <CustomButton type="submit" className="login">
+            <CustomButton
+              type="submit"
+              className={`login ${RecoveryLogin ? "recoveryButton" : ""}`}
+            >
               Log In
             </CustomButton>
           </form>
-          <a href="http://localhost:3000/">Forgotten password?</a>
+
+          {RecoveryLogin ? (
+            <a href={`${path}`} target="_harsh">
+              Forgotten account?
+            </a>
+          ) : (
+            <a
+              onClick={() => {
+                history.push(`${path}/recovery`);
+              }}
+            >
+              Forgotten password?
+            </a>
+          )}
         </div>
-        <CustomButton onClick={() => signUpHandler()}>
-          Create New Account
-        </CustomButton>
-      </div>
+        {!RecoveryLogin && (
+          <CustomButton onClick={() => signUpHandler()}>
+            Create New Account
+          </CustomButton>
+        )}
+      </Container>
     </>
   );
 };

@@ -8,12 +8,50 @@ import Comment from "../comment/Comment";
 import { useDispatch } from "react-redux";
 
 import { deletePost } from "../../redux/User Posts/action";
+const getDuration = (postDate) => {
+  const monthsArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const date = new Date();
+
+  if (date.getFullYear() - postDate.getFullYear() > 0)
+    return date.getFullYear() - postDate.getFullYear() + "y";
+  if (date.getMonth() - postDate.getMonth())
+    return postDate.getDate() + " " + monthsArray[postDate.getMonth()];
+  if (
+    date.getDate() - postDate.getDate() > 0 &&
+    date.getDate() - postDate.getDate() < 30
+  )
+    return date.getDate() - postDate.getDate() + "d";
+
+  if (date.getHours() - postDate.getHours() > 0)
+    return date.getHours() - postDate.getHours() + " " + "h";
+  if (date.getMinutes() - postDate.getMinutes() > 0)
+    return date.getMinutes() - postDate.getMinutes() + " " + "m";
+  console.log(date.getSeconds() - postDate.getSeconds());
+  if (date.getSeconds() - postDate.getSeconds() > 0)
+    return date.getSeconds() - postDate.getSeconds() + " " + "s";
+  if (date.getMilliseconds() - postDate.getMilliseconds() > 0)
+    return 1 + " " + "s";
+};
 
 const Post = ({ data, isLike, token, currentUser }) => {
   const [likesCount, setLikesCount] = useState(0);
 
-  const { user, content, image, _id, comments, likes } = data;
+  const { user, content, image, _id, comments, likes, createdAt, share } = data;
 
+  const postDate = new Date(createdAt);
   const [commentsCount, setCommentsCount] = useState(comments.length);
   const [comment, setComment] = useState("");
   const [userLike, setUserLike] = useState(false);
@@ -22,6 +60,7 @@ const Post = ({ data, isLike, token, currentUser }) => {
 
   const [postComments, setPostComments] = useState(comments);
 
+  console.log(share);
   const addComment = async (e) => {
     if (e.key === "Enter") {
       const dataBody = {
@@ -142,7 +181,7 @@ const Post = ({ data, isLike, token, currentUser }) => {
             <img src={user.avatar} alt="" />
             <div>
               <p>{`${user.firstName} ${user.surname}`}</p>
-              <p>14 h </p>
+              <p>{getDuration(postDate)}</p>
             </div>
           </div>
         </div>
@@ -156,15 +195,25 @@ const Post = ({ data, isLike, token, currentUser }) => {
           <img src={image} alt="" />
         </div>
       )}
+      {/* {likes.length ||
+        commentsCount ||
+        (share.length ? ( */}
       <div className="post_reactions">
         <div className="likes_counts">
           {likes.length + likesCount !== 0 && likes.length + likesCount}
         </div>
         <div className="comments_and_share_counts">
-          <p className="comment_counts">{commentsCount} comments</p>
-          <p className="share_counts">133 shares</p>
+          <p className="comment_counts">
+            {`${commentsCount ? commentsCount + " comments" : ""}`}
+          </p>
+          <p className="share_counts">{`${
+            share.length ? share + " shares" : " "
+          }`}</p>
         </div>
       </div>
+      {/* ) : (
+          ""
+        ))} */}
       <div className={`post_action_buttons `}>
         <p
           onClick={() => likeToggle(_id, "Post")}

@@ -4,6 +4,10 @@ export const SIGN_IN_START = "SIGN_IN_START";
 export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
 export const SIGN_IN_FAILURE = "SIGN_IN_FAILURE";
 
+export const RESET_PASSWORD_START = "RESET_PASSWORD_START";
+export const RESET_PASSWORD_SUCCESS = "RESET_PASSWORD_SUCCESS";
+export const RESET_PASSWORD_FAILURE = "RESET_PASSWORD_FAILURE";
+
 export const FRIEND_REQUEST_SENT_START = "FRIEND_REQUEST_SENT_START";
 export const Add_FRIEND = "Add_FRIEND";
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
@@ -16,6 +20,23 @@ export const DELETE_POST = "DELETE_POST";
 export const ADD_NEW_POST = "ADD_NEW_POST";
 export const UPDATE_POSTS_DATA = "UPDATE_POSTS_DATA";
 
+export const resetPasswordStart = (data) => {
+  return {
+    type: RESET_PASSWORD_START,
+    data,
+  };
+};
+export const resetPasswordSuccess = (data) => {
+  return {
+    type: RESET_PASSWORD_SUCCESS,
+  };
+};
+export const resetPasswordFailure = (data) => {
+  return {
+    type: RESET_PASSWORD_FAILURE,
+    data,
+  };
+};
 export const removeFriend = (data) => {
   return {
     type: REMOVE_FRIEND,

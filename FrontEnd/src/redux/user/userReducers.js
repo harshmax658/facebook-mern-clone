@@ -10,6 +10,8 @@ import {
   Add_FRIEND,
   FRIEND_REQUEST_SENT_FAILURE,
   REMOVE_FRIEND,
+  RESET_PASSWORD_SUCCESS,
+  RESET_PASSWORD_FAILURE,
 } from "./action";
 import { ObjectToArray } from "../User Posts/utilityFunction";
 
@@ -21,6 +23,7 @@ const initialUserState = {
   friends: {},
   loading: true,
   error: null,
+  resetPassword: false,
 };
 
 const userReducer = (state = initialUserState, action) => {
@@ -104,6 +107,12 @@ const userReducer = (state = initialUserState, action) => {
     case FRIEND_REQUEST_SENT_FAILURE:
     case SIGN_IN_FAILURE: {
       return { ...state, error: action.data.message };
+    }
+    case RESET_PASSWORD_SUCCESS: {
+      return { ...state, resetPassword: true };
+    }
+    case RESET_PASSWORD_FAILURE: {
+      return { ...state, resetPassword: false };
     }
 
     default: {

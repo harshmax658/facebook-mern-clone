@@ -19,7 +19,6 @@ const FriendsPage = () => {
   return (
     <div>
       {ObjectToArray(otherUser).map((data, key) => {
-        console.log(!loading);
         return (
           <p key={key} onClick={() => history.push(`/profile/${data._id}`)}>
             {!loading && data.firstName}

@@ -1,6 +1,15 @@
 import { takeLatest, all, call, put } from "redux-saga/effects";
-import { IS_USER_AUTHENTICATE, FRIEND_REQUEST_SENT_START } from "./action";
-import { signInSuccess, signInFailure } from "./action";
+import {
+  IS_USER_AUTHENTICATE,
+  FRIEND_REQUEST_SENT_START,
+  RESET_PASSWORD_START,
+} from "./action";
+import {
+  signInSuccess,
+  resetPasswordFailure,
+  signInFailure,
+  resetPasswordSuccess,
+} from "./action";
 import { SIGN_IN_START } from "./action";
 
 function* friendRequestSentStart({ data: { token, otherUserId } }) {}
@@ -23,10 +32,9 @@ function* authenticateUser({ data: { history } }) {
 
       yield put(signInSuccess(jsonData));
     } else {
-      history.push("/login");
+      // history.push("/");
     }
   } catch (error) {
-    console.log(error);
     yield put(signInFailure(error));
   }
 }
@@ -37,7 +45,6 @@ function* checkUserAuthentication() {
 
 function* userLoginStart({ data: { loginData, history } }) {
   try {
-    console.log("call");
     const response = yield fetch("/api/v1/user/login", {
       method: "Post",
       headers: { "Content-Type": "application/json" },
@@ -65,14 +72,30 @@ function* userLoginStart({ data: { loginData, history } }) {
       throw new Error(dataInJson.message);
     }
   } catch (error) {
-    console.log("err");
     yield put(signInFailure(error));
   }
 }
 
 function* userLogin() {
-  console.log("ayayaaaa");
   yield takeLatest(SIGN_IN_START, userLoginStart);
+}
+function* resetPasswordStart({ data }) {
+  try {
+    console.log(data);
+    const postData = yield fetch("/api/v1/user/resetPassword", {
+      method: "Post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ detail: data }),
+    });
+    if (postData.status === 200) {
+      yield put(resetPasswordSuccess());
+    }
+  } catch (error) {
+    yield put(resetPasswordFailure(error));
+  }
+}
+function* resetPassword() {
+  yield takeLatest(RESET_PASSWORD_START, resetPasswordStart);
 }
 
 export function* userSaga() {
@@ -80,5 +103,6 @@ export function* userSaga() {
     call(checkUserAuthentication),
     call(friendRequestSent),
     call(userLogin),
+    call(resetPassword),
   ]);
 }

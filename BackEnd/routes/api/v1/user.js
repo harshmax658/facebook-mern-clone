@@ -10,6 +10,7 @@ const {
   uploadUserProfile,
   getUserPost,
   getAllUser,
+  resetPassword,
 } = require("../../../controllers/api/v1/users_api");
 
 router.post("/create-user", createNewUser);
@@ -40,4 +41,5 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   getAllUser
 );
+router.post("/resetPassword", resetPassword);
 module.exports = router;

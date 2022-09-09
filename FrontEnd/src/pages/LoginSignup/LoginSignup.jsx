@@ -2,39 +2,33 @@ import React, { useState } from "react";
 import Login from "../../components/Login/Login";
 import "./loginSignup.scss";
 import SignUp from "../../components/signUp/SignUp";
+import RecoveryLogin from "../recovery page/RecoveryLogin";
+import {
+  Switch,
+  Route,
+  useRouteMatch,
+  useParams,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
+import LoginWindow from "../../components/Login Window/LoginWindow";
 
 const LoginSignup = () => {
   const [signup, setSignup] = useState(false);
 
+  const { url } = useRouteMatch();
+  const { pathname } = useLocation();
+
   return (
     <>
-      <section id="home">
-        <section className="homepage_container">
-          <section className="login_signup_container">
-            <div className="intro">
-              <div className="logo">
-                <img
-                  src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"
-                  alt=""
-                />
-              </div>
-              <p>
-                Facebook helps you connect and share with the people in your
-                life.
-              </p>
-            </div>
-            <div className="loginScreen">
-              <Login setSignup={setSignup} />
-            </div>
-          </section>
-
-          {signup && (
-            <div className="signup_box">
-              <SignUp cancelForm={setSignup} />
-            </div>
-          )}
+      <Switch>
+        <Route path={`${url}/recovery`} component={RecoveryLogin} />
+      </Switch>
+      {!pathname.includes("recovery") && (
+        <section id="home">
+          <LoginWindow signup={signup} setSignup={setSignup} />
         </section>
-      </section>
+      )}
     </>
   );
 };

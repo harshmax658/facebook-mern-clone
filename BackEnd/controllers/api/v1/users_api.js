@@ -255,6 +255,32 @@ const getAllUser = async (request, response) => {
     });
   }
 };
+const resetPassword = async (request, response) => {
+  try {
+    const user = await User.findOne({ email: request.body.detail.id });
+    if (user) {
+      if (request.body.detail.newPass) {
+        console.log("value Hai");
+        user.password = request.body.detail.newPass;
+        await user.save();
+        return response.status(200).json({
+          message: "new password set succefully",
+        });
+      }
+      return response.status(200).json({
+        msg: "Found",
+      });
+    } else {
+      return response.status(404).json({
+        msg: "not found",
+      });
+    }
+  } catch (error) {
+    return response.status(500).json({
+      msg: "Internel Server error",
+    });
+  }
+};
 module.exports = {
   createNewUser,
   getUserData,
@@ -264,4 +290,5 @@ module.exports = {
   getUserPost,
   getAllUser,
   sendUserJWTtoken,
+  resetPassword,
 };
